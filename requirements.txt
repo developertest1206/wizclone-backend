@@ -1,0 +1,13 @@
+fastapi==0.136.3
+uvicorn==0.48.0
+supabase==2.30.0
+python-dotenv==1.2.2
+python-jose==3.5.0
+passlib==1.7.4
+httpx==0.28.1
+pydantic==2.13.4
+pydantic-settings==2.14.1
+asyncpg==0.31.0
+sqlalchemy==2.0.50
+bcrypt==5.0.0
+cryptography==48.0.0
