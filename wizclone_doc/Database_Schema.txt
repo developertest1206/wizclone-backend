@@ -1,0 +1,640 @@
+WizClone
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CMD:
+
+Microsoft Windows [Version 10.0.22000.2538]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\os>D:
+
+D:\>mkdir wizclone-backend
+
+D:\>cd wizclone-backend
+
+D:\wizclone-backend>python -m venv venv
+
+D:\wizclone-backend>.\venv\Scripts\Activate
+
+(venv) D:\wizclone-backend>pip install fastapi uvicorn[standard] supabase python-dotenv python-jose[cryptography] passlib[bcrypt] httpx pydantic pydantic-settings asyncpg
+Collecting fastapi
+Successfully installed annotated-doc-0.0.4 annotated-types-0.7.0 anyio-4.13.0 asyncpg-0.31.0 bcrypt-5.0.0 cachetools-6.2.6 certifi-2026.5.20 cffi-2.0.0 charset_normalizer-3.4.7 click-8.4.1 colorama-0.4.6 cryptography-48.0.0 deprecation-2.1.0 ecdsa-0.19.2 fastapi-0.136.3 fsspec-2026.4.0 h11-0.16.0 h2-4.3.0 hpack-4.1.0 httpcore-1.0.9 httptools-0.7.1 httpx-0.28.1 hyperframe-6.1.0 idna-3.16 markdown-it-py-4.2.0 mdurl-0.1.2 mmh3-5.2.1 multidict-6.7.1 packaging-26.2 passlib-1.7.4 postgrest-2.30.0 propcache-0.5.2 pyasn1-0.6.3 pycparser-3.0 pydantic-2.13.4 pydantic-core-2.46.4 pydantic-settings-2.14.1 pygments-2.20.0 pyiceberg-0.11.1 pyjwt-2.13.0 pyparsing-3.3.2 pyroaring-1.1.0 python-dateutil-2.9.0.post0 python-dotenv-1.2.2 python-jose-3.5.0 pyyaml-6.0.3 realtime-2.30.0 requests-2.34.2 rich-14.3.4 rsa-4.9.1 six-1.17.0 starlette-1.1.0 storage3-2.30.0 strenum-0.4.15 strictyaml-1.7.3 supabase-2.30.0 supabase-auth-2.30.0 supabase-functions-2.30.0 tenacity-9.1.4 typing-extensions-4.15.0 typing-inspection-0.4.2 urllib3-2.7.0 uvicorn-0.48.0 watchfiles-1.2.0 websockets-15.0.1 yarl-1.24.2 zstandard-0.25.0
+
+(venv) D:\wizclone-backend>pip freeze > requirements.txt
+
+(venv) D:\wizclone-backend>code .
+
+(venv) D:\wizclone-backend>mkdir app
+
+(venv) D:\wizclone-backend>python -m app.services.worker
+[Worker] 🚀 WizClone background worker started
+[Worker] Polling every 3 seconds
+[Worker] Found 1 pending job(s)
+[Worker] Processing job 611151f2-e2cc-4c56-a5c8-16e3bdf50baa — item: 'New Client Onboarding'
+[Worker] Running matching for 'New Client Onboarding' (sensitivity: BALANCED)
+[Matching] AI unavailable for item 'New Client Onboarding' — using exact match fallback
+[Worker] No match found for 'New Client Onboarding'
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PowerShell:
+
+PS D:\wizclone-backend> (Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned) ; (& D:\wizclone-backend\venv\Scripts\Activate.ps1)
+                                                                                                 
+(venv) PS D:\wizclone-backend> New-Item .gitignore -ItemType File
+    Directory: D:\wizclone-backend
+Mode                 LastWriteTime         Length Name                                                                                                            
+----                 -------------         ------ ----                                                                                                            
+-a----         5/25/2026  10:42 AM              0 .gitignore                                                                                                      
+
+(venv) PS D:\wizclone-backend> python -c "
+>> from app.core.jwt import create_access_token
+>> token = create_access_token({
+>>     'workspace_id': '50b13fef-6a00-4243-a733-f6e1691c6089',
+>>     'plan_tier': 'BUSINESS'
+>> })
+>> print('TOKEN:', token)
+>> "
+TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ3b3Jrc3BhY2VfaWQiOiI1MGIxM2ZlZi02YTAwLTQyNDMtYTczMy1mNmUxNjkxYzYwODkiLCJwbGFuX3RpZXIiOiJCVVNJTkVTUyIsImV4cCI6MTc3OTc4MzcxOH0.0fxCD6-1MxBlKrGnjA_eQWCYBpunvIOHr4-IdKukRTI
+
+
+(venv) PS D:\wizclone-backend> uvicorn main:app --reload --port 8000
+INFO:     Will watch for changes in these directories: ['D:\\wizclone-backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [38792] using WatchFiles   
+INFO:     Started server process [29160]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:64546 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64546 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64550 - "GET /api/v1/settings/50b13fef-6a00-4243-a733-f6e1691c6089 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64555 - "GET /api/v1/templates/50b13fef-6a00-4243-a733-f6e1691c6089 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64577 - "GET /api/v1/activity/50b13fef-6a00-4243-a733-f6e1691c6089?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64595 - "GET /api/v1/activity/50b13fef-6a00-4243-a733-f6e1691c6089?status=SUCCESS&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64654 - "POST /api/v1/templates/50b13fef-6a00-4243-a733-f6e1691c6089 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64659 - "GET /api/v1/templates/50b13fef-6a00-4243-a733-f6e1691c6089 HTTP/1.1" 200 OK
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+SupaBase
+
+
+-- Enable UUID
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+-- Workspace enums
+CREATE TYPE plan_tier_enum AS ENUM ('FREE', 'PRO', 'BUSINESS');
+CREATE TYPE workspace_status_enum AS ENUM ('ACTIVE', 'SUSPENDED', 'UNINSTALLED');
+CREATE TYPE paused_reason_enum AS ENUM ('template_board_deleted', 'token_revoked', 'billing_issue');
+
+-- User enums
+CREATE TYPE user_role_enum AS ENUM ('ADMIN', 'MEMBER', 'VIEWER');
+
+-- Settings enums
+CREATE TYPE ai_sensitivity_enum AS ENUM ('STRICT', 'BALANCED', 'LOOSE');
+CREATE TYPE webhook_status_enum AS ENUM ('ACTIVE', 'FAILED', 'EXPIRED');
+
+-- Template enums
+CREATE TYPE template_type_enum AS ENUM ('CHECKLIST', 'TASK', 'BUG', 'FEATURE');
+CREATE TYPE template_source_enum AS ENUM ('MANUAL', 'AI_BUILDER', 'SUGGESTION');
+
+-- Automation enums
+CREATE TYPE match_method_enum AS ENUM ('AI', 'EXACT_MATCH', 'FALLBACK');
+CREATE TYPE trigger_type_enum AS ENUM ('WEBHOOK', 'MANUAL', 'RETRY');
+CREATE TYPE event_status_enum AS ENUM ('SUCCESS', 'FAILED', 'NO_MATCH', 'PARTIAL_SUCCESS');
+
+-- Queue enums
+CREATE TYPE job_type_enum AS ENUM ('MATCHING', 'COPY', 'RETRY', 'CLEANUP');
+CREATE TYPE job_status_enum AS ENUM ('PENDING', 'RUNNING', 'FAILED', 'COMPLETED');
+
+-- AI suggestion enums
+CREATE TYPE suggestion_status_enum AS ENUM ('PENDING', 'ACCEPTED', 'DISMISSED');
+
+-- Billing enums
+CREATE TYPE billing_status_enum AS ENUM ('ACTIVE', 'TRIAL', 'PAST_DUE', 'CANCELLED');
+CREATE TYPE installation_status_enum AS ENUM ('INSTALLED', 'UNINSTALLED', 'REINSTALLED');
+
+-- Upgrade prompt enums
+CREATE TYPE prompt_type_enum AS ENUM ('FREE_LIMIT_REACHED', 'AI_DISABLED', 'TEMPLATE_LIMIT');
+
+CREATE TABLE plans (
+  id               UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  plan_name        TEXT NOT NULL UNIQUE,
+  monthly_price    DECIMAL(10,2) NOT NULL DEFAULT 0,
+  max_templates    INTEGER,       -- NULL = unlimited
+  max_copies_per_month INTEGER,  -- NULL = unlimited
+  ai_matching_enabled  BOOLEAN NOT NULL DEFAULT false,
+  ai_builder_enabled   BOOLEAN NOT NULL DEFAULT false,
+  ai_suggestions_enabled BOOLEAN NOT NULL DEFAULT false,
+  features_json    JSONB DEFAULT '{}',
+  created_at       TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at       TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+-- Seed 3 plans
+INSERT INTO plans (plan_name, monthly_price, max_templates, max_copies_per_month, ai_matching_enabled, ai_builder_enabled, ai_suggestions_enabled) VALUES
+('FREE',     0,  1,    50,   false, false, false),
+('PRO',     19, 10,  500,   true,  false, false),
+('BUSINESS',39, NULL, NULL, true,  true,  true);
+
+CREATE TABLE workspaces (
+  id                    UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  monday_account_id     BIGINT NOT NULL,
+  monday_workspace_id   BIGINT NOT NULL UNIQUE,
+  workspace_name        TEXT NOT NULL,
+  access_token          TEXT NOT NULL,   -- encrypt at app layer!
+  refresh_token         TEXT,
+  token_expires_at      TIMESTAMPTZ,
+  plan_tier             plan_tier_enum NOT NULL DEFAULT 'FREE',
+  status                workspace_status_enum NOT NULL DEFAULT 'ACTIVE',
+  is_active             BOOLEAN NOT NULL DEFAULT true,
+  is_paused             BOOLEAN NOT NULL DEFAULT false,
+  paused_reason         paused_reason_enum,
+  installed_at          TIMESTAMPTZ NOT NULL DEFAULT now(),
+  last_active_at        TIMESTAMPTZ,
+  created_at            TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at            TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX idx_workspaces_monday_workspace_id ON workspaces(monday_workspace_id);
+CREATE INDEX idx_workspaces_status ON workspaces(status);
+
+-- Insert test workspace
+INSERT INTO workspaces (
+  monday_account_id, monday_workspace_id, workspace_name,
+  access_token, plan_tier, status, is_active, is_paused
+) VALUES (
+  12345, 12345, 'Test Workspace',
+  'test-token', 'BUSINESS', 'ACTIVE', true, false
+) RETURNING id;
+
+CREATE TABLE users (
+  id                UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  workspace_id      UUID NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+  monday_user_id    BIGINT NOT NULL,
+  email             TEXT,
+  name              TEXT,
+  role              user_role_enum NOT NULL DEFAULT 'MEMBER',
+  is_admin          BOOLEAN NOT NULL DEFAULT false,
+  created_at        TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at        TIMESTAMPTZ NOT NULL DEFAULT now(),
+  deleted_at        TIMESTAMPTZ
+);
+
+CREATE UNIQUE INDEX idx_users_workspace_monday ON users(workspace_id, monday_user_id);
+CREATE INDEX idx_users_workspace_id ON users(workspace_id);
+
+CREATE TABLE workspace_settings (
+  id                        UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  workspace_id              UUID NOT NULL UNIQUE REFERENCES workspaces(id) ON DELETE CASCADE,
+  template_board_id         BIGINT,
+  template_board_name       TEXT,
+  template_board_deleted    BOOLEAN NOT NULL DEFAULT false,
+  ai_sensitivity            ai_sensitivity_enum NOT NULL DEFAULT 'BALANCED',
+  ai_enabled                BOOLEAN NOT NULL DEFAULT true,
+  exact_match_fallback_enabled BOOLEAN NOT NULL DEFAULT true,
+  is_enabled                BOOLEAN NOT NULL DEFAULT true,
+  onboarding_completed      BOOLEAN NOT NULL DEFAULT false,
+  created_by_user_id        UUID REFERENCES users(id),
+  updated_by_user_id        UUID REFERENCES users(id),
+  created_at                TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at                TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+ALTER TABLE workspace_settings
+  ADD COLUMN webhook_enabled          BOOLEAN NOT NULL DEFAULT false,
+  ADD COLUMN webhook_id               TEXT,
+  ADD COLUMN webhook_registered_at    TIMESTAMPTZ;
+
+CREATE TABLE monitored_boards (
+  id                   UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  workspace_id         UUID NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+  board_id             BIGINT NOT NULL,
+  board_name           TEXT,
+  webhook_id           TEXT,
+  webhook_status       webhook_status_enum NOT NULL DEFAULT 'ACTIVE',
+  is_enabled           BOOLEAN NOT NULL DEFAULT true,
+  ai_enabled           BOOLEAN NOT NULL DEFAULT true,
+  sensitivity_override ai_sensitivity_enum,   -- NULL = use workspace default
+  last_sync_at         TIMESTAMPTZ,
+  created_by_user_id   UUID REFERENCES users(id),
+  is_active            BOOLEAN NOT NULL DEFAULT true,
+  created_at           TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at           TIMESTAMPTZ NOT NULL DEFAULT now(),
+  deleted_at           TIMESTAMPTZ
+);
+
+CREATE UNIQUE INDEX idx_monitored_boards_workspace_board ON monitored_boards(workspace_id, board_id) WHERE deleted_at IS NULL;
+CREATE INDEX idx_monitored_boards_workspace_id ON monitored_boards(workspace_id);
+
+CREATE TABLE templates (
+  id                  UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  workspace_id        UUID NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+  created_by_user_id  UUID REFERENCES users(id),
+  template_type       template_type_enum,
+  monday_item_id      BIGINT,
+  name                TEXT NOT NULL,
+  description         TEXT,
+  source              template_source_enum NOT NULL DEFAULT 'MANUAL',
+  created_by_ai       BOOLEAN NOT NULL DEFAULT false,
+  ai_prompt           TEXT,
+  matching_keywords   JSONB DEFAULT '[]',
+  usage_count         INTEGER NOT NULL DEFAULT 0,
+  last_used_at        TIMESTAMPTZ,
+  last_synced_at      TIMESTAMPTZ,
+  is_active           BOOLEAN NOT NULL DEFAULT true,
+  is_deleted          BOOLEAN NOT NULL DEFAULT false,
+  created_at          TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at          TIMESTAMPTZ NOT NULL DEFAULT now(),
+  deleted_at          TIMESTAMPTZ
+);
+
+CREATE INDEX idx_templates_workspace_id ON templates(workspace_id);
+CREATE INDEX idx_templates_active ON templates(workspace_id) WHERE is_deleted = false;
+
+-- Template Subitems
+CREATE TABLE template_subitems (
+  id                       UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  template_id              UUID NOT NULL REFERENCES templates(id) ON DELETE CASCADE,
+  monday_subitem_id        BIGINT,
+  name                     TEXT NOT NULL,
+  monday_column_id         TEXT,
+  sort_order               INTEGER NOT NULL DEFAULT 0,
+  default_status           TEXT,
+  assigned_monday_user_id  BIGINT,
+  default_values_json      JSONB DEFAULT '{}',
+  column_values_json       JSONB DEFAULT '{}',
+  created_at               TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at               TIMESTAMPTZ NOT NULL DEFAULT now(),
+  deleted_at               TIMESTAMPTZ
+);
+
+CREATE INDEX idx_template_subitems_template_id ON template_subitems(template_id);
+CREATE INDEX idx_template_subitems_order ON template_subitems(template_id, sort_order);
+
+CREATE TABLE automation_events (
+  id                      UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  workspace_id            UUID NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+  item_id                 BIGINT NOT NULL,
+  item_name               TEXT,
+  board_id                BIGINT,
+  board_name              TEXT,
+  creator_monday_user_id  BIGINT,
+  matched_template_id     UUID REFERENCES templates(id),
+  matched_template_name   TEXT,
+  match_method            match_method_enum,
+  confidence_score        DECIMAL(5,2),
+  ai_sensitivity_used     ai_sensitivity_enum,
+  trigger_type            trigger_type_enum NOT NULL DEFAULT 'WEBHOOK',
+  processed_at            TIMESTAMPTZ,
+  completed_at            TIMESTAMPTZ,
+  subitems_copied         INTEGER NOT NULL DEFAULT 0,
+  subitems_failed         INTEGER NOT NULL DEFAULT 0,
+  failed_subitem_names    JSONB DEFAULT '[]',
+  status                  event_status_enum NOT NULL DEFAULT 'NO_MATCH',
+  error_details           TEXT,
+  ai_fallback_used        BOOLEAN NOT NULL DEFAULT false,
+  retry_count             INTEGER NOT NULL DEFAULT 0,
+  retry_status            TEXT,
+  processing_ms           INTEGER,
+  source_event_payload    JSONB,
+  worker_version          TEXT,
+  event_id                TEXT UNIQUE,  -- deduplication key
+  created_at              TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at              TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX idx_auto_events_workspace_id ON automation_events(workspace_id);
+CREATE INDEX idx_auto_events_status ON automation_events(workspace_id, status);
+CREATE INDEX idx_auto_events_created_at ON automation_events(workspace_id, created_at DESC);
+
+ALTER TABLE automation_events
+  ALTER COLUMN confidence_score TYPE DECIMAL(5,4);
+
+-- Queue Jobs
+CREATE TABLE queue_jobs (
+  id                  UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  automation_event_id UUID REFERENCES automation_events(id),
+  workspace_id        UUID NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+  job_id              TEXT UNIQUE,
+  worker_name         TEXT,
+  job_type            job_type_enum NOT NULL,
+  status              job_status_enum NOT NULL DEFAULT 'PENDING',
+  payload             JSONB,
+  payload_hash        TEXT,
+  priority            INTEGER NOT NULL DEFAULT 0,
+  attempt_count       INTEGER NOT NULL DEFAULT 0,
+  max_attempts        INTEGER NOT NULL DEFAULT 3,
+  next_retry_at       TIMESTAMPTZ,
+  last_error          TEXT,
+  available_at        TIMESTAMPTZ DEFAULT now(),
+  locked_at           TIMESTAMPTZ,
+  started_at          TIMESTAMPTZ,
+  completed_at        TIMESTAMPTZ,
+  failed_at           TIMESTAMPTZ,
+  created_at          TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at          TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX idx_queue_jobs_workspace_id ON queue_jobs(workspace_id);
+CREATE INDEX idx_queue_jobs_status ON queue_jobs(status, available_at);
+
+INSERT INTO queue_jobs (
+  workspace_id, job_type, status, payload, max_attempts, priority
+) VALUES (
+  '50b13fef-6a00-4243-a733-f6e1691c6089',
+  'MATCHING', 'PENDING',
+  '{"item_id": 999, "item_name": "New Client Onboarding", "board_id": 111, "workspace_id": "50b13fef-6a00-4243-a733-f6e1691c6089", "event_id": "test-001"}',
+  3, 1
+);
+
+
+CREATE TABLE ai_suggestions (
+  id                     UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  workspace_id           UUID NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+  pattern_hash           TEXT NOT NULL,
+  suggested_template_name TEXT,
+  detected_item_names    JSONB DEFAULT '[]',
+  occurrence_count       INTEGER NOT NULL DEFAULT 0,
+  suggested_subitems     JSONB DEFAULT '[]',
+  status                 suggestion_status_enum NOT NULL DEFAULT 'PENDING',
+  dismissed_until        TIMESTAMPTZ,
+  accepted_template_id   UUID REFERENCES templates(id),
+  confidence_score       DECIMAL(5,2),
+  approved_by_user_id    UUID REFERENCES users(id),
+  created_at             TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at             TIMESTAMPTZ NOT NULL DEFAULT now(),
+  deleted_at             TIMESTAMPTZ
+);
+
+CREATE UNIQUE INDEX idx_ai_suggestions_pattern ON ai_suggestions(workspace_id, pattern_hash) WHERE deleted_at IS NULL;
+CREATE INDEX idx_ai_suggestions_workspace_id ON ai_suggestions(workspace_id);
+
+ALTER TABLE ai_suggestions
+  ALTER COLUMN confidence_score TYPE DECIMAL(5,4);
+
+CREATE TABLE usage_metrics (
+  id                    UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  workspace_id          UUID NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+  billing_cycle_start   DATE NOT NULL,
+  billing_cycle_end     DATE NOT NULL,
+  copies_used           INTEGER NOT NULL DEFAULT 0,
+  ai_match_calls        INTEGER NOT NULL DEFAULT 0,
+  total_ai_credits_used INTEGER NOT NULL DEFAULT 0,
+  total_ai_credit_cost  DECIMAL(10,4) NOT NULL DEFAULT 0,
+  exact_match_count     INTEGER NOT NULL DEFAULT 0,
+  fallback_match_count  INTEGER NOT NULL DEFAULT 0,
+  templates_created     INTEGER NOT NULL DEFAULT 0,
+  no_match_count        INTEGER NOT NULL DEFAULT 0,
+  total_automation_runs INTEGER NOT NULL DEFAULT 0,
+  success_runs          INTEGER NOT NULL DEFAULT 0,
+  failed_runs           INTEGER NOT NULL DEFAULT 0,
+  last_copy_at          TIMESTAMPTZ,
+  created_at            TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at            TIMESTAMPTZ NOT NULL DEFAULT now(),
+  CONSTRAINT uq_usage_metrics_period UNIQUE(workspace_id, billing_cycle_start)
+);
+
+CREATE INDEX idx_usage_metrics_workspace_id ON usage_metrics(workspace_id);
+
+-- Usage Logs (granular per-event)
+CREATE TABLE usage_logs (
+  id            UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  workspace_id  UUID NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+  event_type    TEXT NOT NULL,
+  ai_credits_used INTEGER NOT NULL DEFAULT 0,
+  credit_cost   DECIMAL(10,4) NOT NULL DEFAULT 0,
+  reference_id  UUID,    -- automation_event_id or template_id
+  metadata_json JSONB DEFAULT '{}',
+  created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX idx_usage_logs_workspace_id ON usage_logs(workspace_id);
+CREATE INDEX idx_usage_logs_created_at ON usage_logs(workspace_id, created_at DESC);
+
+CREATE TABLE workspace_subscriptions (
+  id                    UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  workspace_id          UUID NOT NULL UNIQUE REFERENCES workspaces(id) ON DELETE CASCADE,
+  plan_id               UUID NOT NULL REFERENCES plans(id),
+  billing_status        billing_status_enum NOT NULL DEFAULT 'TRIAL',
+  current_period_start  TIMESTAMPTZ,
+  current_period_end    TIMESTAMPTZ,
+  monday_billing_id     TEXT,
+  is_active             BOOLEAN NOT NULL DEFAULT true,
+  limit_reached_at      TIMESTAMPTZ,
+  created_at            TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at            TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+-- Upgrade Prompts
+CREATE TABLE upgrade_prompts (
+  id               UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  workspace_id     UUID NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+  user_id          UUID REFERENCES users(id),
+  subscription_id  UUID REFERENCES workspace_subscriptions(id),
+  prompt_type      prompt_type_enum NOT NULL,
+  trigger_reason   TEXT,
+  shown_at         TIMESTAMPTZ,
+  dismissed_at     TIMESTAMPTZ,
+  upgraded_at      TIMESTAMPTZ,
+  created_at       TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX idx_upgrade_prompts_workspace_id ON upgrade_prompts(workspace_id);
+
+CREATE TABLE webhook_deduplication (
+  id            UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  event_id      TEXT NOT NULL UNIQUE,
+  workspace_id  UUID NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+  board_id      BIGINT,
+  item_id       BIGINT,
+  received_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
+  processed_at  TIMESTAMPTZ,
+  is_processed  BOOLEAN NOT NULL DEFAULT false,
+  expires_at    TIMESTAMPTZ NOT NULL DEFAULT (now() + interval '7 days')
+);
+
+CREATE INDEX idx_webhook_dedup_event_id ON webhook_deduplication(event_id);
+CREATE INDEX idx_webhook_dedup_expires_at ON webhook_deduplication(expires_at);
+
+-- Auto-cleanup expired rows (run this too)
+CREATE OR REPLACE FUNCTION cleanup_expired_webhooks()
+RETURNS void AS $$
+  DELETE FROM webhook_deduplication WHERE expires_at < now();
+$$ LANGUAGE sql;
+
+CREATE TABLE oauth_token_logs (
+  id                  UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  workspace_id        UUID NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+  refresh_status      TEXT NOT NULL,   -- 'success' | 'failed'
+  failure_reason      TEXT,
+  old_token_expired_at TIMESTAMPTZ,
+  created_at          TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX idx_oauth_token_logs_workspace_id ON oauth_token_logs(workspace_id);
+
+-- App Installations
+CREATE TABLE app_installations (
+  id                  UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  workspace_id        UUID NOT NULL REFERENCES workspaces(id) ON DELETE CASCADE,
+  installed_by_user_id UUID REFERENCES users(id),
+  app_version         TEXT,
+  status              installation_status_enum NOT NULL DEFAULT 'INSTALLED',
+  installed_at        TIMESTAMPTZ NOT NULL DEFAULT now(),
+  uninstalled_at      TIMESTAMPTZ,
+  created_at          TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at          TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX idx_app_installations_workspace_id ON app_installations(workspace_id);
+
+CREATE OR REPLACE FUNCTION set_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = now();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Apply to all tables that have updated_at
+CREATE TRIGGER trg_workspaces_updated_at
+  BEFORE UPDATE ON workspaces
+  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+CREATE TRIGGER trg_users_updated_at
+  BEFORE UPDATE ON users
+  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+CREATE TRIGGER trg_workspace_settings_updated_at
+  BEFORE UPDATE ON workspace_settings
+  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+CREATE TRIGGER trg_monitored_boards_updated_at
+  BEFORE UPDATE ON monitored_boards
+  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+CREATE TRIGGER trg_templates_updated_at
+  BEFORE UPDATE ON templates
+  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+CREATE TRIGGER trg_template_subitems_updated_at
+  BEFORE UPDATE ON template_subitems
+  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+CREATE TRIGGER trg_automation_events_updated_at
+  BEFORE UPDATE ON automation_events
+  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+CREATE TRIGGER trg_queue_jobs_updated_at
+  BEFORE UPDATE ON queue_jobs
+  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+CREATE TRIGGER trg_ai_suggestions_updated_at
+  BEFORE UPDATE ON ai_suggestions
+  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+CREATE TRIGGER trg_usage_metrics_updated_at
+  BEFORE UPDATE ON usage_metrics
+  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+CREATE TRIGGER trg_workspace_subscriptions_updated_at
+  BEFORE UPDATE ON workspace_subscriptions
+  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+CREATE TRIGGER trg_plans_updated_at
+  BEFORE UPDATE ON plans
+  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+CREATE TRIGGER trg_app_installations_updated_at
+  BEFORE UPDATE ON app_installations
+  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+-- Copy limit check karva maate — backend call kare before every copy
+CREATE OR REPLACE FUNCTION check_copy_allowed(p_workspace_id UUID)
+RETURNS JSONB AS $$
+DECLARE
+  v_plan     plans%ROWTYPE;
+  v_sub      workspace_subscriptions%ROWTYPE;
+  v_usage    usage_metrics%ROWTYPE;
+BEGIN
+  SELECT p.* INTO v_plan
+    FROM plans p
+    JOIN workspace_subscriptions ws ON ws.plan_id = p.id
+    WHERE ws.workspace_id = p_workspace_id AND ws.is_active = true
+    LIMIT 1;
+
+  SELECT * INTO v_usage
+    FROM usage_metrics
+    WHERE workspace_id = p_workspace_id
+      AND billing_cycle_start <= now()::DATE
+      AND billing_cycle_end   >= now()::DATE
+    LIMIT 1;
+
+  -- NULL = unlimited (BUSINESS plan)
+  IF v_plan.max_copies_per_month IS NULL THEN
+    RETURN jsonb_build_object('allowed', true, 'reason', 'unlimited');
+  END IF;
+
+  IF COALESCE(v_usage.copies_used, 0) >= v_plan.max_copies_per_month THEN
+    RETURN jsonb_build_object(
+      'allowed',    false,
+      'reason',     'monthly_limit_reached',
+      'used',       COALESCE(v_usage.copies_used, 0),
+      'limit',      v_plan.max_copies_per_month,
+      'plan',       v_plan.plan_name
+    );
+  END IF;
+
+  RETURN jsonb_build_object(
+    'allowed',    true,
+    'remaining',  v_plan.max_copies_per_month - COALESCE(v_usage.copies_used, 0)
+  );
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- Usage atomically increment karvaa — thread-safe
+CREATE OR REPLACE FUNCTION increment_copy_usage(
+  p_workspace_id UUID,
+  p_ai_used      BOOLEAN DEFAULT false
+) RETURNS VOID AS $$
+BEGIN
+  UPDATE usage_metrics SET
+    copies_used      = copies_used + 1,
+    ai_match_calls   = ai_match_calls + CASE WHEN p_ai_used THEN 1 ELSE 0 END,
+    last_copy_at     = now(),
+    updated_at       = now()
+  WHERE workspace_id = p_workspace_id
+    AND billing_cycle_start <= now()::DATE
+    AND billing_cycle_end   >= now()::DATE;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+
+
+RELATIONSHIPS:-
+
+(1) workspaces ──── (many) users
+(1) workspaces ──── (1) workspace_settings
+(1) workspaces ──── (many) monitored_boards
+(1) workspaces ──── (many) templates
+(1) templates ──── (many) template_subitems
+(1) workspaces ──── (many) automation_events
+(1) automation_events ──── (many) queue_jobs
+(1) workspaces ──── (many) ai_suggestions
+(1) ai_suggestions ──── (1) templates [accepted_template_id]
+(1) templates ──── (many) automation_events [matched_template_id]
+(1) workspaces ──── (many) usage_metrics
+(1) usage_metrics ──── (many) usage_logs
+(1) plans ──── (many) workspace_subscriptions
+(1) workspaces ──── (1) workspace_subscriptions
+(1) workspaces ──── (many) webhook_deduplication
+(1) workspaces ──── (many) oauth_token_logs
+(1) workspaces ──── (many) app_installations
+
